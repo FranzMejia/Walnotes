@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>POS Log Template Dashboard</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: auto;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 24px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #2c3e50;
+      margin-top: 30px;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 15px;
+      color: #4a5568;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+    .dashboard-panel {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    /* Front Page Hub Layout */
+    .hub-container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hub-title {
+      font-size: 26px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      min-height: 120px;
+    }
+    .card:hover {
+      border-color: #3182ce;
+      background-color: #ebf8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.1);
+    }
+    .card-title {
+      font-size: x-large;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+    .tag {
+      background: #edf2f7;
+      color: #4a5568;
+      font-size: 16px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .card:hover .tag {
+      background: #cbd5e0;
+    }
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+      background: #ffffff;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    th {
+      background-color: #ebf8ff;
+      color: #2b6cb0;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 2px solid #cbd5e0;
+    }
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+    tr:hover {
+      background-color: #f8fafc;
+    }
+    
+    /* Rule: Font Bold and 14 size for the description logs */
+    .log-text {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #1a202c;
+    }
+    
+    .action-cell {
+      width: 110px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .btn {
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {a
+      background-color: #2b6cb0;
+    }
+    .btn:active {
+      background-color: #2c5282;
+    }
+    .status-msg {
+      font-size: 12px;
+      color: #38a169;
+      font-weight: bold;
+      margin-right: 8px;
+      display: none;
+    }
+    .fallback-textarea {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+    }
+    .label-tag
+    {
+      font-size: medium;
+      font-weight: bold;
+      color: #0069e9;
+    }
+
+    html {
+  scroll-behavior: smooth; /* Enables smooth animated scrolling */
+
+
+  /* Floating Back to Top Button Component */
+  .back-to-top-fixed {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #3182ce; /* Primary theme blue */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Class toggled by JavaScript when scrolling down */
+  .back-to-top-fixed.visible {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+  }
+
+  .back-to-top-fixed:hover {
+    background-color: #2b6cb0;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(49, 130, 206, 0.3);
+  }
+
+  .back-to-top-fixed:active {
+    transform: translateY(-1px);
+  }
+
+    
+  </style>
+</head>
+
+<div id="top-anchor">
+<body>
+<!-- Front Page Layout Block matching user image shape constraints -->
+  <div class="hub-container">
+    <div class="hub-title">POS Logs Dashboard</div>
+    <div class="grid">
+      <!-- Row Section Card 1 -->
+      <a href="#pos" class="card">
+        <div class="card-title">POS Call Attempts</div>
+         <div class="card-tags"><span class="tag">POS</span></div>
+      </a>
+      <!-- Row Section Card 2 -->
+      <a href="#posdu" class="card">
+        <div class="card-title">Dispatch Unavailability</div>
+         <div class="card-tags"><span class="tag">POSDU</span></div>
+      </a>
+      <!-- Row Section Card 3 -->
+      <a href="#posdi" class="card">
+        <div class="card-title">Dispatch with Instructed Stores</div>
+         <div class="card-tags"><span class="tag">POSDI</span></div>
+      </a>
+      <a href="#posrd" class="card">
+        <div class="card-title">Redirects</div>
+         <div class="card-tags"><span class="tag">POSRD</span></div>
+      </a>
+      <!-- Row Section Card 2 -->
+      <a href="#poscn" class="card">
+        <div class="card-title">Cancellations</div>
+         <div class="card-tags"><span class="tag">POSCN</span></div>
+      </a>
+      <!-- Row Section Card 3 -->
+      <a href="#posfsd" class="card">
+        <div class="card-title">Field Support Dispatch </div>
+        <div class="card-tags"><span class="tag">POSFSD</span></div>
+      </a>
+      <!-- Row Section Card 3 -->
+      <a href="#posdp" class="card">
+        <div class="card-title">Duplicate</div>
+        <div class="card-tags"><span class="tag">POSDP</span></div>
+      </a>
+       <!-- Row Section Card 3 -->
+      <a href="#posrr" class="card">
+        <div class="card-title">Remote Resolution</div>
+        <div class="card-tags"><span class="tag">POSRR</span></div>
+      </a>
+       <!-- Row Section Card 3 -->
+      <a href="#posrw" class="card">
+        <div class="card-title">Rework</div>
+        <div class="card-tags"><span class="tag">POSRW</span></div>
+      </a>  
+    </div>
+  </div>
+
+  <!-- POS Section -->
+  <div id="pos" class="dashboard-panel"> 
+    <table>
+      <thead>
+        <tr>
+          <th>Call Attempts</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p class="log-text">POS - Adjusting Priority per SLA</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, no answer.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store to verify the issue, no answer.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the site for the second time, but still no answer.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the site for the third time, but still no answer.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, seems like phone is disconnected.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, phone is not in service.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store 2nd time, phone is not in service.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, was put on long hold.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, Store is closed ATM</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, they requested a callback.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, will provide them with a callback later so they can test it.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POS - Called the store, Spoke to **TL or Coach Name or Caller** will provide them with a callback later as store was advised to do a reboot to test and get update afterwards.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+        <tr>
+          <td><p class="log-text">POS - Disregard Previous Log</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- $_POSDU Section -->
+  <div id="posdu" class="dashboard-panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Dispatch Unavailability</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><p class="log-text">POSDU - Dispatching CE per SLA.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POSDU - Dispatching CE per Service.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POSDU - Dispatching CE per store unavailability</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td><p class="log-text">POSDU - We have tried reaching the club 3 times with no success, Dispatching CE to assist.</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!--POSDI Section -->
+    <div id="posdi" class="dashboard-panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Dispatch with Instructions</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <td>
+            <p class="log-text">POSDI - Dispatching CE per Service.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>     
+      </tbody>
+      
+    <!-- HHS Subsection -->
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Handheld Gun - No Scanner Beam</div>
+            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Cleaned HHS and base charging contacts, performed a 45+ second charge test, and cross-swapped scanner hardware across registers. Completed a full register power cycle. Issue unresolved; lane slowness remains.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Handheld Gun - Not Charging</div>
+            <p class="log-text">POS - Called the store. Spoke to "Caller" confirmed the issue that HHS is not charging and no beam. Instructed the store to clean the brass contacts on the heel of the gun and in the contacts found in the base/cradle, check for any damage on the prongs. Place the gun properly into the base, it will take approx. two full minutes before you see any indication that the gun is charging. It will take approx. 3.5 minutes before a test scan can be accomplished. TS no progress, advised store to power down but issue still persists.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+
+    <!-- DR Subsection -->
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Debit Reader</div>
+            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Instructed site to power the register down, unplug debit reader cable from back of the Logic for at least 10 seconds, plug cable back in, & power up the Logic. Once Logic is fully booted, have store associate test the buttons by performing a reset on the debit reader by hitting the minus [-] & yellow-colored/”Clear” keys at the same time. However, the issue persists to resolve the issue.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+  
+    <!-- SCALE Subsection -->
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Scanner Scale</div>
+            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Instructed the store to Power off the register, reseat interface cable on back of Logic, lift off the SS top plate and clean the glass on both sides. Also, clean the area underneath the SS plate; insure nothing is touching the plate or preventing the load cell from moving freely. Power register up. However, the issue persists to resolve the issue.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+
+    <!-- REG Subsection -->
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Register Logic</div>
+            <p class="log-text">POS - Spoke with "Caller". Store rebooted the register, reseated cables, and completed on-screen troubleshooting. The issue remains unresolved. Dispatching a CE for service.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+
+    <!-- PRINTER Subsection -->
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Printer</div>
+            <p class="log-text">POS - Called the store spoke to TL Mary confirmed the issue. Instructed site to power the register off, unplug the printer cable, replace paper roll, clean the thermal head, make sure nothing is jamming the receipt path, check for damage, plug the cable back in, power the register on and Printer is not available after powercycle.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+  <!-- POSRD Subsection -->
+  <div id="posrd" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Redirects</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">For SW COSTL Issues - EBT </div>
+            <p class="log-text">POSRD - Reassigning ticket to CCC - Legacy POS for further assistance</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">For Legacy SW Issues - EBT</div>
+            <p class="log-text">POSRD - Reassigning ticket to SD -FS - POS for further assistance </p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">HIPAA Debit Readers and Issue Non-Register related</div>
+            <p class="log-text">POSRD - Reassigning ticket to NCR - Non - POS L1 for further assistance</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- <div class="label-tag">For HIPAA Debit Readers</div> -->
+            <p class="log-text">POSRD - Reassigning ticket to NCR - Proof of Delivery for further assistance</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- <div class="label-tag">For HIPAA Debit Readers</div> -->
+            <p class="log-text">POSRD - Reassigning ticket to NCR - Rollout Projects for further assistance</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  <!-- POSCN Subsection -->
+  <div id="poscn" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Cancellations</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Sensormatic [MPP Alerts]</div>
+            <p class="log-text">POSCN - This issue is out of NCR scope of work. Please contact Sensormatic for further assistance, (800-488-7602), Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Gas Station Support</div>
+            <p class="log-text">POSCN - Please contact Solve One (Gas station support) 800-378-9652 in order to get assistance on Gas Pump Issues. Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Missing Handheld Gun Scanner</div>
+            <p class="log-text">POSCN - Please contact MyGNFR (312-300-0355) in order to get assistance regarding issues with Missing Handheld Gun (HHS). Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Damaged Signature Pen</div>
+            <p class="log-text">POSCN - From what we can see, the debit reader on this register is L7000 for which NCR nor Walmart have replacement styluses. This debit reader can also be used via touch. This ticket will be closed. Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Conveyor Belt Issues</div>
+            <p class="log-text">POSCN - Please contact PAN OSTEEN in order to get assistance regarding issues with Conveyor Belt. PAN OSTEEN - Conveyor Belts at (800-472-6678). Closing as info only. Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Facilities Maintenance</div>
+            <p class="log-text">POSCN - This issue involves bracket, cabinetry and fixtures, which falls under Facilities rather than POS support. Please contact Facilities Maintenance at 888-658-7522 for assistance with this issue. Closing this ticket as "Information Only." Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Hardware Instability</div>
+            <p class="log-text">POSCN - For all issues regarding the cabinetry and mounts that are causing register hardware instability, please contact Walmart Facilities maintenance 479-204-0272. Closing as info only. Thank you! NCR - Point of Sale L1.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Three Strike Rule</div>
+            <p class="log-text">POSCN - We apologize for the delay in resolution of your ticket.  Upon review of this incident, we see that we have reached out on multiple occasions and have been unable to successfully connect for some required information in order to proceed with your ticket.
+                We called the store at:
+                    1. 9:44 PM CST     
+                    2. 10 15 PM CST      
+                    3. 10 32 PM CST      
+            Since we are unable to reach the store, we advise you to create another ticket and make sure to specify what register number is having this issue. We will be canceling this incident at this time. If you have any further issues, please contact us. Closing as info only.
+            </p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+<!--REMOTE RESOLUTION Section-->|
+  <div id="posrr" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Remote Resolution</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Handheld Gun Scanner</div>
+            <p class="log-text">POSRR - Called the store spoke to "Caller" confirmed the issue. Instructed the store to clean the brass contacts on the underside of the gun where it meets the base to charge, as well as the contacts on the base itself. The register has been rebooted; they have placed the gun on the base to charge for more than 45 seconds and tested it. Site also tried to swapped devices from other registers. Issue Resolved
+</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="label-tag">Debit Reader</div>
+            <p class="log-text">POSRR - Called the store, Spoke to "Caller" stated that the DR is now working. Issue resolved
+ </p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- <div class="label-tag">For HIPAA Debit Readers</div> -->
+            <p class="log-text">POSRR - Issue resolved, screenshot provided in the attachments</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+</div>
+
+<!--Duplicate Section-->
+  <div id="posdp" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Duplicate</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <!--<div class="label-tag">Handheld Gun Scanner</div>-->
+            <p class="log-text">POSDP - We apologize for the delay in resolution of your ticket. Upon reviewing your incident, we see that a similar issue was logged in this ticket - [INC]. If the issue is ongoing, please do log another ticket with new examples and symptoms as applicable.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  <!--Duplicate Section-->
+  <div id="posrw" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Rework</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <!--<div class="label-tag">Handheld Gun Scanner</div>-->
+            <p class="log-text">POSRW – "Caller" stated that the issue persists. Dispatching CE for service</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  
+
+    <!--Field Support Dispatch Section-->
+  <div id="posfsd" class="dashboard-panel"> 
+    <table>
+        <thead>
+        <tr>
+          <th>Field Support Dispatch</th>
+          <th style="text-align: right;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Ticket Creation</div>
+            <p class="log-text">POS - NCR Tech [CE CODE] stated that TL **** reported an issue for "ISSUE"</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="log-text">POSFSD - Dispatching per CE US***** request.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+    </div>
+  </div>
+
+<!-- 1. The Invisible Anchor Point (Place this at the very top of your <body> tags) -->
+</div>
+
+<!-- 2. The Interactive Floating Button (Place this anywhere inside your <body> tags) -->
+<a href="#top-anchor" id="btnScrollTop" class="back-to-top-fixed" title="Scroll to Top">Top ▲</a>
+
+
+<textarea id="hidden-copy-area" style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true"></textarea>
+
+<script>
+
+  // Floating Button Scroll Monitor
+  const scrollTopButton = document.getElementById('btnScrollTop');
+  
+  window.addEventListener('scroll', () => {
+    // Reveals the button when the viewport scrolls past 250px
+    if (window.scrollY > 250) {
+      scrollTopButton.classList.add('visible');
+    } else {
+      scrollTopButton.classList.remove('visible');
+    }
+  });
+
+  function copyLog(buttonElement) {
+    // Find the row containing the clicked button
+    const row = buttonElement.closest('tr');
+    if (!row) return;
+
+    // Get the log paragraph text cleanly
+    const logTextEl = row.querySelector('.log-text');
+    if (!logTextEl) return;
+    const textToCopy = logTextEl.innerText;
+    
+    const statusMsg = row.querySelector('.status-msg');
+
+    // 1. Forceful direct fallback route to bypass browser policy blocks
+    const textArea = document.getElementById('hidden-copy-area');
+    textArea.value = textToCopy;
+    
+    // Select and copy using structural document routing
+    textArea.select();
+    textArea.setSelectionRange(0, 99999); // For mobile/touch compliance
+
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        showSuccess(statusMsg);
+        return; // Success, exit function
+      }
+    } catch (err) {
+      console.warn('Backup buffer copy method blocked.');
+    }
+
+    // 2. Secondary alternative route if permissions allow it
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => showSuccess(statusMsg))
+        .catch(() => handleManualFallback(textToCopy));
+    } else {
+      handleManualFallback(textToCopy);
+    }
+  }
+
+  function handleManualFallback(text) {
+    // Fallback if browser entirely sandboxes all structural copy processes
+    alert("Browser security is blocking auto-copy.\n\nPlease select and copy this text manually:\n\n" + text);
+  }
+
+  function showSuccess(element) {
+    if (!element) return;
+    element.style.display = 'inline';
+    setTimeout(() => {
+      element.style.display = 'none';
+    }, 2000);
+  }
+
+</script>
+
+
