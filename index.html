@@ -245,7 +245,7 @@
 <body>
 <!-- Front Page Layout Block matching user image shape constraints -->
   <div class="hub-container">
-    <div class="hub-title">POS Logs Dashboard</div>
+    <!--<div class="hub-title">POS Logs Dashboard</div> -->
     <div class="grid">
       <!-- Row Section Card 1 -->
       <a href="#pos" class="card">
@@ -389,13 +389,21 @@
           </td>
         </tr>
         <tr>
-          <td><p class="log-text">POS - Called the store, Spoke to **TL or Coach Name or Caller** will provide them with a callback later as store was advised to do a reboot to test and get update afterwards.</p></td>
+          <td><p class="log-text">POS - Called the store, Spoke to [Caller Name] will provide them with a callback later as store was advised to do a reboot to test and get update afterwards.</p></td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
             <button class="btn" onclick="copyLog(this)">Copy</button>
           </td>
         </tr>
         <tr>
+        <tr>
+          <td><p class="log-text">POS - Hello [Caller Name] could you please provide us with the register number so we can provide further assistance. Thank you..</p></td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>  
         <tr>
           <td><p class="log-text">POS - Disregard Previous Log</p></td>
           <td class="action-cell">
@@ -474,7 +482,7 @@
         <tr>
           <td>
             <div class="label-tag">Handheld Gun - No Scanner Beam</div>
-            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Cleaned HHS and base charging contacts, performed a 45+ second charge test, and cross-swapped scanner hardware across registers. Completed a full register power cycle. Issue unresolved; lane slowness remains.</p>
+            <p class="log-text">POS - Called the store spoke to [Caller Name] confirmed the issue. Cleaned HHS and base charging contacts, performed a 45+ second charge test, and cross-swapped scanner hardware across registers. Completed a full register power cycle. Issue unresolved; lane slowness remains.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -484,7 +492,7 @@
         <tr>
           <td>
             <div class="label-tag">Handheld Gun - Not Charging</div>
-            <p class="log-text">POS - Called the store. Spoke to "Caller" confirmed the issue that HHS is not charging and no beam. Instructed the store to clean the brass contacts on the heel of the gun and in the contacts found in the base/cradle, check for any damage on the prongs. Place the gun properly into the base, it will take approx. two full minutes before you see any indication that the gun is charging. It will take approx. 3.5 minutes before a test scan can be accomplished. TS no progress, advised store to power down but issue still persists.</p>
+            <p class="log-text">POS - Called the store. Spoke to [Caller Name] confirmed the issue that HHS is not charging and no beam. Instructed the store to clean the brass contacts on the heel of the gun and in the contacts found in the base/cradle, check for any damage on the prongs. Place the gun properly into the base, it will take approx. two full minutes before you see any indication that the gun is charging. It will take approx. 3.5 minutes before a test scan can be accomplished. TS no progress, advised store to power down but issue still persists.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -498,7 +506,7 @@
         <tr>
           <td>
             <div class="label-tag">Debit Reader</div>
-            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Instructed site to power the register down, unplug debit reader cable from back of the Logic for at least 10 seconds, plug cable back in, & power up the Logic. Once Logic is fully booted, have store associate test the buttons by performing a reset on the debit reader by hitting the minus [-] & yellow-colored/”Clear” keys at the same time. However, the issue persists to resolve the issue.</p>
+            <p class="log-text">POS - Called the store spoke to [Caller Name] confirmed the issue. Instructed site to power the register down, unplug debit reader cable from back of the Logic for at least 10 seconds, plug cable back in, & power up the Logic. Once Logic is fully booted, have store associate test the buttons by performing a reset on the debit reader by hitting the minus [-] & yellow-colored/”Clear” keys at the same time. However, the issue persists to resolve the issue.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -512,7 +520,7 @@
         <tr>
           <td>
             <div class="label-tag">Scanner Scale</div>
-            <p class="log-text">POS - Called the store spoke to "Caller" confirmed the issue. Instructed the store to Power off the register, reseat interface cable on back of Logic, lift off the SS top plate and clean the glass on both sides. Also, clean the area underneath the SS plate; insure nothing is touching the plate or preventing the load cell from moving freely. Power register up. However, the issue persists to resolve the issue.</p>
+            <p class="log-text">POS - Called the store spoke to [Caller Name] confirmed the issue. Instructed the store to Power off the register, reseat interface cable on back of Logic, lift off the SS top plate and clean the glass on both sides. Also, clean the area underneath the SS plate; insure nothing is touching the plate or preventing the load cell from moving freely. Power register up. However, the issue persists to resolve the issue.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -526,7 +534,7 @@
         <tr>
           <td>
             <div class="label-tag">Register Logic</div>
-            <p class="log-text">POS - Spoke with "Caller". Store rebooted the register, reseated cables, and completed on-screen troubleshooting. The issue remains unresolved. Dispatching a CE for service.</p>
+            <p class="log-text">POS - Spoke with [Caller Name]. Store rebooted the register, reseated cables, and completed on-screen troubleshooting. The issue remains unresolved. Dispatching a CE for service.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -540,7 +548,7 @@
         <tr>
           <td>
             <div class="label-tag">Printer</div>
-            <p class="log-text">POS - Called the store spoke to TL Mary confirmed the issue. Instructed site to power the register off, unplug the printer cable, replace paper roll, clean the thermal head, make sure nothing is jamming the receipt path, check for damage, plug the cable back in, power the register on and Printer is not available after powercycle.</p>
+            <p class="log-text">POS - Called the store spoke to [Caller Name] confirmed the issue. Instructed site to power the register off, unplug the printer cable, replace paper roll, clean the thermal head, make sure nothing is jamming the receipt path, check for damage, plug the cable back in, power the register on and Printer is not available after powercycle.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -667,7 +675,7 @@
         <tr>
           <td>
             <div class="label-tag">Conveyor Belt Issues</div>
-            <p class="log-text">POSCN - Please contact PAN OSTEEN in order to get assistance regarding issues with Conveyor Belt. PAN OSTEEN - Conveyor Belts at (800-472-6678). Closing as info only. Thank you! NCR - Point of Sale L1.</p>
+            <p class="log-text">POSCN - Please contact PAN-OSTON at (800-472-6678) in order to get assistance regarding issues with Conveyor Belts. Closing as info only. Thank you! NCR - Point of Sale L1.</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -726,7 +734,7 @@
         <tr>
           <td>
             <div class="label-tag">Handheld Gun Scanner</div>
-            <p class="log-text">POSRR - Called the store spoke to "Caller" confirmed the issue. Instructed the store to clean the brass contacts on the underside of the gun where it meets the base to charge, as well as the contacts on the base itself. The register has been rebooted; they have placed the gun on the base to charge for more than 45 seconds and tested it. Site also tried to swapped devices from other registers. Issue Resolved
+            <p class="log-text">POSRR - Called the store spoke to [Caller Name] confirmed the issue. Instructed the store to clean the brass contacts on the underside of the gun where it meets the base to charge, as well as the contacts on the base itself. The register has been rebooted; they have placed the gun on the base to charge for more than 45 seconds and tested it. Site also tried to swapped devices from other registers. Issue Resolved
 </p>
           </td>
           <td class="action-cell">
@@ -737,7 +745,7 @@
         <tr>
           <td>
             <div class="label-tag">Debit Reader</div>
-            <p class="log-text">POSRR - Called the store, Spoke to "Caller" stated that the DR is now working. Issue resolved
+            <p class="log-text">POSRR - Called the store, Spoke to [Caller Name] stated that the DR is now working. Issue resolved
  </p>
           </td>
           <td class="action-cell">
@@ -794,7 +802,7 @@
         <tr>
           <td>
             <!--<div class="label-tag">Handheld Gun Scanner</div>-->
-            <p class="log-text">POSRW – "Caller" stated that the issue persists. Dispatching CE for service</p>
+            <p class="log-text">POSRW – [Caller Name] stated that the issue persists. Dispatching CE for service</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
@@ -819,7 +827,7 @@
         <tr>
           <td>
             <div class="label-tag">Ticket Creation</div>
-            <p class="log-text">POS - NCR Tech [CE CODE] stated that TL **** reported an issue for "ISSUE"</p>
+            <p class="log-text">POS - NCR Tech [CE CODE] stated that [Caller Name] reported [ISSUE]</p>
           </td>
           <td class="action-cell">
             <span class="status-msg">Copied!</span>
