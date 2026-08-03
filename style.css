@@ -402,6 +402,27 @@ td {
   transform: translateY(-1px);
 }
 
+/* Footer */
+.site-footer {
+  font-family: var(--font-family-default);
+  color: rgba(255,255,255,0.95);
+  text-align: center;
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 18px;
+  font-size: 0.75rem;
+  background: transparent;
+}
+
+.site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 520px) {
+  .site-footer { padding: 12px 14px; font-size: 0.9rem; }
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
