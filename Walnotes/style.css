@@ -1,0 +1,484 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family-default: EverydaySans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --walmart-blue: #0053E2;
+  --walmart-dark: #07326b;
+  --walmart-soft: #ebf8ff;
+  --walmart-gold: #f8d12e;
+  --walmart-surface: rgba(255, 255, 255, 0.96);
+  --walmart-border: rgba(13, 66, 143, 0.16);
+  --table-everyday: #4DBDF5;
+  --table-bentonville: #001E60;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+}
+
+body {
+  font-family: var(--font-family-default);
+  background: var(--walmart-blue);
+  color: #102a43;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.10), transparent 28%),
+    radial-gradient(circle at 20% 80%, rgba(248,209,46,0.08), transparent 12%),
+    radial-gradient(circle at 78% 70%, rgba(255,255,255,0.06), transparent 10%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 28px;
+  background: rgba(4, 49, 95, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  z-index: 1000;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.spark {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--walmart-gold);
+  color: var(--walmart-dark);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.topnav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.topnav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.topnav a:hover {
+  color: var(--walmart-gold);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 34px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.hero-banner {
+  padding: 120px 24px 40px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 24%),
+    linear-gradient(180deg, rgba(5,110,210,0.92) 0%, rgba(4,49,95,0.98) 100%);
+}
+
+.hero-content {
+  max-width: 880px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.hero-content h1 {
+  margin: 0 0 18px;
+  font-size: clamp(3rem, 5vw, 4.4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.hero-content p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: rgba(255,255,255,0.94);
+}
+
+.content-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 110px 24px 32px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.main-container {
+  padding: 56px 56px 48px;
+  border-radius: 36px;
+  margin: 84px auto 32px;
+  width: min(100%, 1400px);
+  max-width: 1400px;
+  backdrop-filter: blur(18px);
+  min-height: calc(100vh - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-container {
+  background: rgba(255,255,255,0.16);
+  padding: 56px 40px;
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 48px 130px rgba(1,37,80,0.20);
+  margin: 0 auto 32px;
+  width: min(100%, 1800px);
+  backdrop-filter: blur(12px);
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.card {
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(15,83,174,0.22);
+  border-radius: 28px;
+  padding: 42px 36px;
+  text-decoration: none;
+  color: var(--walmart-dark);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  text-align: center;
+}
+
+.card:hover {
+  border-color: rgba(248,209,46,0.75);
+  background: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 28px 64px rgba(1,37,80,0.18);
+}
+
+.card-title {
+  margin: 0 0 30px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--walmart-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.card-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag {
+  background: var(--walmart-gold);
+  color: var(--walmart-dark);
+  font-size: 1rem;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.dashboard-panel {
+  background: var(--walmart-surface);
+  padding: 32px 28px;
+  border-radius: 28px;
+  box-shadow: 0 22px 55px rgba(1,37,80,0.12);
+  margin: 0 auto 30px;
+  max-width: 1600px;
+  border: 1px solid rgba(13,66,143,0.12);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 83, 226, 0.18);
+  border-radius: 18px;
+  overflow: hidden;
+  font-family: var(--font-family-default);
+}
+
+thead {
+  background: var(--table-bentonville);
+}
+
+th {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+th:last-child {
+  width: 160px;
+  text-align: right;
+}
+
+tbody tr {
+  border-bottom: 1px solid rgba(77,189,245,0.16);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background: #ffffff;
+}
+
+tbody tr:hover {
+  background: rgba(0,83,226,0.08);
+}
+
+td {
+  padding: 18px 20px;
+  color: #102a43;
+  vertical-align: top;
+}
+
+.label-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--walmart-blue);
+}
+
+.log-text {
+  margin: 0;
+  font-family: var(--font-family-default);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #102a43;
+}
+
+.action-cell {
+  width: 180px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.btn {
+  background-color: var(--walmart-dark);
+  color: #ffffff;
+  border: none;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 24px rgba(4,50,105,0.18);
+}
+
+.btn:hover {
+  background-color: var(--walmart-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(4,50,105,0.22);
+}
+
+.btn:active {
+  background-color: #052f74;
+  transform: translateY(0);
+}
+
+.status-msg {
+  display: none;
+  font-size: 0.85rem;
+  color: #15803d;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.fallback-textarea {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+.back-to-top-fixed {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: var(--walmart-gold);
+  color: var(--walmart-dark);
+  text-decoration: none;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top-fixed.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-fixed:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(49, 130, 206, 0.3);
+}
+
+.back-to-top-fixed:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .dashboard-panel,
+  .hub-container {
+    padding: 24px;
+  }
+
+  .topnav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 14px 18px;
+  }
+
+  .hero-banner {
+    padding: 110px 16px 34px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  th,
+  td {
+    padding: 14px 16px;
+  }
+
+  .action-cell {
+    width: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    padding: 12px 14px;
+  }
+
+  .hero-banner {
+    padding: 100px 12px 30px;
+  }
+
+  .hub-container {
+    padding: 22px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px 12px;
+  }
+
+  .back-to-top-fixed {
+    right: 14px;
+    bottom: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
