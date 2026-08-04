@@ -159,7 +159,7 @@ body::before {
 .main-container {
   padding: 56px 56px 48px;
   border-radius: 36px;
-  margin: 55px auto 120px;
+  margin: 70px auto 120px;
   width: min(100%, 1400px);
   max-width: 1400px;
   backdrop-filter: blur(18px);
