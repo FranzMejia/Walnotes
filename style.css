@@ -78,11 +78,6 @@ input:focus-visible {
   flex: none;
 }
 
-.logo img {
-width: 40px;
-height: 40px;
-object-fit: contain;
-}
 code {
   font-family: var(--mono);
   font-size: 0.85em;
