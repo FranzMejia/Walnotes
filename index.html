@@ -3,55 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quick POS Logs Dashboard</title>
+  <title>Quick POS Logs — Knowledge Base</title>
   <link rel="icon" type="image/png" href="img/walmart_ico.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="top-anchor">
+  <div id="top-anchor"></div>
+
+  <header class="kb-topbar">
+    <div class="kb-topbar-inner">
+      <a href="#top-anchor" class="kb-brand">
+        <span class="kb-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </span>
+        <span class="kb-brand-text">Quick POS Logs <span class="kb-brand-sub">Knowledge Base</span></span>
+      </a>
+      <nav class="kb-topnav" aria-label="Primary">
+        <a href="#categories">Categories</a>
+        <a href="#articles">All logs</a>
+      </nav>
+    </div>
   </header>
-  <main class="hub">
-    <div class="main-container">
-      <div class="grid">
-        <a href="#pos" class="card">
-          <div class="card-title">Call Attempts</div>
-          <div class="card-tags"><span class="tag">POSTS</span></div>
-        </a>
-        <a href="#posdu" class="card">
-          <div class="card-title">Dispatch Unavailability</div>
-          <div class="card-tags"><span class="tag">POSDU</span></div>
-        </a>
-        <a href="#posdi" class="card">
-          <div class="card-title">Dispatch with Instructed Stores</div>
-          <div class="card-tags"><span class="tag">POSDI</span></div>
-        </a>
-        <a href="#posrd" class="card">
-          <div class="card-title">Redirects</div>
-          <div class="card-tags"><span class="tag">POSRD</span></div>
-        </a>
-        <a href="#poscn" class="card">
-          <div class="card-title">Cancellations</div>
-          <div class="card-tags"><span class="tag">POSCN</span></div>
-        </a>
-        <a href="#posfsd" class="card">
-          <div class="card-title">Field Support Dispatch</div>
-          <div class="card-tags"><span class="tag">POSFSD</span></div>
-        </a>
-        <a href="#posdp" class="card">
-          <div class="card-title">Duplicate</div>
-          <div class="card-tags"><span class="tag">POSDP</span></div>
-        </a>
-        <a href="#posrr" class="card">
-          <div class="card-title">Remote Resolution</div>
-          <div class="card-tags"><span class="tag">POSRR</span></div>
-        </a>
-        <a href="#posrw" class="card">
-          <div class="card-title">Rework</div>
-          <div class="card-tags"><span class="tag">POSRW</span></div>
-        </a>
+
+  <section class="kb-hero">
+    <div class="kb-hero-inner">
+      <p class="kb-eyebrow">NCR · Point of Sale L1</p>
+      <h1>How can we help you log today?</h1>
+      <p class="kb-hero-lead">Search ready-to-use ticket log templates and copy them in one click.</p>
+      <div class="kb-search" role="search">
+        <svg class="kb-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="kb-search-input" placeholder="Search logs, e.g. &quot;debit reader&quot;, &quot;no answer&quot;, &quot;POSCN&quot;" autocomplete="off" aria-label="Search logs">
+        <kbd class="kb-search-kbd" aria-hidden="true">/</kbd>
+      </div>
+      <p class="kb-search-status" id="kb-search-status" aria-live="polite"></p>
+      <div class="kb-popular">
+        <span>Popular:</span>
+        <button type="button" class="kb-chip" data-query="no answer">No answer</button>
+        <button type="button" class="kb-chip" data-query="debit reader">Debit reader</button>
+        <button type="button" class="kb-chip" data-query="printer">Printer</button>
+        <button type="button" class="kb-chip" data-query="reassigning">Reassigning</button>
+        <button type="button" class="kb-chip" data-query="info only">Info only</button>
       </div>
     </div>
-    <div id="pos" class="dashboard-panel">
+  </section>
+
+  <main class="hub">
+    <section id="categories" class="kb-categories" aria-labelledby="categories-title">
+      <div class="kb-section-head">
+        <h2 id="categories-title">Browse by category</h2>
+        <p>9 categories · 46 log templates</p>
+      </div>
+      <div class="grid">
+        <a href="#pos" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Call Attempts</div>
+            <p class="card-desc">Call attempts, no-answer follow-ups and requests for store information.</p>
+            <div class="card-tags"><span class="tag">POSTS</span><span class="card-count">15 logs</span></div>
+          </div>
+        </a>
+        <a href="#posdu" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M14 9h4l4 4v4h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Dispatch Unavailability</div>
+            <p class="card-desc">Quick logs for dispatching a CE per SLA, service or store unavailability.</p>
+            <div class="card-tags"><span class="tag">POSDU</span><span class="card-count">3 logs</span></div>
+          </div>
+        </a>
+        <a href="#posdi" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Dispatch with Instructions</div>
+            <p class="card-desc">Troubleshooting steps performed with the store before dispatching, by device.</p>
+            <div class="card-tags"><span class="tag">POSDI</span><span class="card-count">7 logs</span></div>
+          </div>
+        </a>
+        <a href="#posrd" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Redirects</div>
+            <p class="card-desc">Reassignment logs for routing tickets to the correct support group.</p>
+            <div class="card-tags"><span class="tag">POSRD</span><span class="card-count">5 logs</span></div>
+          </div>
+        </a>
+        <a href="#poscn" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Cancellations</div>
+            <p class="card-desc">Closing notes for out-of-scope issues, info-only tickets and the three strike rule.</p>
+            <div class="card-tags"><span class="tag">POSCN</span><span class="card-count">8 logs</span></div>
+          </div>
+        </a>
+        <a href="#posfsd" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Field Support Dispatch</div>
+            <p class="card-desc">Ticket creation and dispatch logs requested by field engineers.</p>
+            <div class="card-tags"><span class="tag">POSFSD</span><span class="card-count">2 logs</span></div>
+          </div>
+        </a>
+        <a href="#posdp" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Duplicate</div>
+            <p class="card-desc">Response for tickets already logged under another incident.</p>
+            <div class="card-tags"><span class="tag">POSDP</span><span class="card-count">1 log</span></div>
+          </div>
+        </a>
+        <a href="#posrr" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Remote Resolution</div>
+            <p class="card-desc">Logs for issues resolved remotely with the store.</p>
+            <div class="card-tags"><span class="tag">POSRR</span><span class="card-count">4 logs</span></div>
+          </div>
+        </a>
+        <a href="#posrw" class="card">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M8 16H3v5"/></svg></span>
+          <div class="card-body">
+            <div class="card-title">Rework</div>
+            <p class="card-desc">Logs for reopened tickets where the issue persists.</p>
+            <div class="card-tags"><span class="tag">POSRW</span><span class="card-count">1 log</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div id="articles" class="kb-layout">
+      <aside class="kb-sidebar" aria-label="Categories">
+        <p class="kb-sidebar-title">Categories</p>
+        <nav>
+          <ul class="kb-sidenav">
+            <li><a href="#pos" data-target="pos"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg><span>Call Attempts</span><span class="kb-sidenav-count">15</span></a></li>
+            <li><a href="#posdu" data-target="posdu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M14 9h4l4 4v4h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><span>Dispatch Unavailability</span><span class="kb-sidenav-count">3</span></a></li>
+            <li><a href="#posdi" data-target="posdi"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"/></svg><span>Dispatch with Instructions</span><span class="kb-sidenav-count">7</span></a></li>
+            <li><a href="#posrd" data-target="posrd"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>Redirects</span><span class="kb-sidenav-count">5</span></a></li>
+            <li><a href="#poscn" data-target="poscn"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg><span>Cancellations</span><span class="kb-sidenav-count">8</span></a></li>
+            <li><a href="#posfsd" data-target="posfsd"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg><span>Field Support Dispatch</span><span class="kb-sidenav-count">2</span></a></li>
+            <li><a href="#posdp" data-target="posdp"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Duplicate</span><span class="kb-sidenav-count">1</span></a></li>
+            <li><a href="#posrr" data-target="posrr"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Remote Resolution</span><span class="kb-sidenav-count">4</span></a></li>
+            <li><a href="#posrw" data-target="posrw"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M8 16H3v5"/></svg><span>Rework</span><span class="kb-sidenav-count">1</span></a></li>
+          </ul>
+        </nav>
+        <div class="kb-help">
+          <p class="kb-help-title">Tip</p>
+          <p>Replace placeholders like <code>[Caller Name]</code> and <code>[INC]</code> after pasting.</p>
+        </div>
+      </aside>
+
+      <div class="kb-content">
+        <div class="kb-no-results" id="kb-no-results" hidden>
+          <p class="kb-no-results-title">No logs match your search.</p>
+          <p>Try a different keyword or <button type="button" class="kb-link-btn" id="kb-clear-search">clear the search</button>.</p>
+        </div>
+
+    <article id="pos" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Call Attempts</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+          <div>
+            <h2>Call Attempts <span class="tag">POSTS</span></h2>
+            <p class="kb-article-desc">Call attempts, no-answer follow-ups and requests for store information.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">15 templates</span></p>
+      </header>
       <table>
         <thead>
           <tr>
@@ -167,9 +284,20 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </article>
 
-    <div id="posdu" class="dashboard-panel">
+    <article id="posdu" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Dispatch Unavailability</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17h4V5H2v12h3"/><path d="M14 9h4l4 4v4h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
+          <div>
+            <h2>Dispatch Unavailability <span class="tag">POSDU</span></h2>
+            <p class="kb-article-desc">Quick logs for dispatching a CE per SLA, service or store unavailability.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">3 templates</span></p>
+      </header>
       <table>
         <thead>
           <tr>
@@ -201,10 +329,20 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </article>
 
-    <!--POSDI Section -->
-    <div id="posdi" class="dashboard-panel">
+    <article id="posdi" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Dispatch with Instructions</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"/></svg></span>
+          <div>
+            <h2>Dispatch with Instructions <span class="tag">POSDI</span></h2>
+            <p class="kb-article-desc">Troubleshooting steps performed with the store before dispatching, by device.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">7 templates</span></p>
+      </header>
 
       <table>
         <thead>
@@ -285,10 +423,20 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </article>
 
-  <!-- POSRD Subsection -->
-  <div id="posrd" class="dashboard-panel"> 
+    <article id="posrd" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Redirects</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg></span>
+          <div>
+            <h2>Redirects <span class="tag">POSRD</span></h2>
+            <p class="kb-article-desc">Reassignment logs for routing tickets to the correct support group.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">5 templates</span></p>
+      </header>
     <table>
         <thead>
         <tr>
@@ -348,10 +496,20 @@
           </td>
         </tr>
     </table>
-  </div>
+    </article>
 
-  <!-- POSCN Subsection -->
-  <div id="poscn" class="dashboard-panel"> 
+    <article id="poscn" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Cancellations</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></span>
+          <div>
+            <h2>Cancellations <span class="tag">POSCN</span></h2>
+            <p class="kb-article-desc">Closing notes for out-of-scope issues, info-only tickets and the three strike rule.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">8 templates</span></p>
+      </header>
     <table>
         <thead>
         <tr>
@@ -447,10 +605,95 @@
           </td>
         </tr>
     </table>
-  </div>
+    </article>
 
-<!--REMOTE RESOLUTION Section-->
-  <div id="posrr" class="dashboard-panel"> 
+    <article id="posfsd" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Field Support Dispatch</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+          <div>
+            <h2>Field Support Dispatch <span class="tag">POSFSD</span></h2>
+            <p class="kb-article-desc">Ticket creation and dispatch logs requested by field engineers.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">2 templates</span></p>
+      </header>
+    <table>
+        <thead>
+        <tr>
+          <th>Field Support Dispatch</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="label-tag">Ticket Creation</div>
+            <p class="log-text">POSTS - NCR Tech [CE CODE] stated that [Caller Name] reported [ISSUE]</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="log-text">POSFSD - Dispatching per CE US***** request.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+    </article>
+
+    <article id="posdp" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Duplicate</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+          <div>
+            <h2>Duplicate <span class="tag">POSDP</span></h2>
+            <p class="kb-article-desc">Response for tickets already logged under another incident.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">1 template</span></p>
+      </header>
+    <table>
+        <thead>
+        <tr>
+          <th>Duplicate</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <!--<div class="label-tag">Handheld Gun Scanner</div>-->
+            <p class="log-text">POSDP - We apologize for the delay in resolution of your ticket. Upon reviewing your incident, we see that a similar issue was logged in this ticket - [INC]. If the issue is ongoing, please do log another ticket with new examples and symptoms as applicable.</p>
+          </td>
+          <td class="action-cell">
+            <span class="status-msg">Copied!</span>
+            <button class="btn" onclick="copyLog(this)">Copy</button>
+          </td>
+        </tr>
+    </table>
+    </article>
+
+    <article id="posrr" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Remote Resolution</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div>
+            <h2>Remote Resolution <span class="tag">POSRR</span></h2>
+            <p class="kb-article-desc">Logs for issues resolved remotely with the store.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">4 templates</span></p>
+      </header>
     <table>
         <thead>
         <tr>
@@ -502,33 +745,20 @@
           </td>
         </tr>
     </table>
-</div>
+    </article>
 
-<!--Duplicate Section-->
-  <div id="posdp" class="dashboard-panel"> 
-    <table>
-        <thead>
-        <tr>
-          <th>Duplicate</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <!--<div class="label-tag">Handheld Gun Scanner</div>-->
-            <p class="log-text">POSDP - We apologize for the delay in resolution of your ticket. Upon reviewing your incident, we see that a similar issue was logged in this ticket - [INC]. If the issue is ongoing, please do log another ticket with new examples and symptoms as applicable.</p>
-          </td>
-          <td class="action-cell">
-            <span class="status-msg">Copied!</span>
-            <button class="btn" onclick="copyLog(this)">Copy</button>
-          </td>
-        </tr>
-    </table>
-  </div>
-
-  <!--Duplicate Section-->
-  <div id="posrw" class="dashboard-panel"> 
+    <article id="posrw" class="dashboard-panel">
+      <header class="kb-article-head">
+        <nav class="kb-breadcrumb" aria-label="Breadcrumb"><a href="#categories">Knowledge Base</a><span aria-hidden="true">/</span><span>Rework</span></nav>
+        <div class="kb-article-title">
+          <span class="card-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M8 16H3v5"/></svg></span>
+          <div>
+            <h2>Rework <span class="tag">POSRW</span></h2>
+            <p class="kb-article-desc">Logs for reopened tickets where the issue persists.</p>
+          </div>
+        </div>
+        <p class="kb-article-meta"><span class="kb-article-count">1 template</span></p>
+      </header>
     <table>
         <thead>
         <tr>
@@ -548,51 +778,15 @@
           </td>
         </tr>
     </table>
-  </div>
+    </article>
 
-  
-
-    <!--Field Support Dispatch Section-->
-  <div id="posfsd" class="dashboard-panel"> 
-    <table>
-        <thead>
-        <tr>
-          <th>Field Support Dispatch</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="label-tag">Ticket Creation</div>
-            <p class="log-text">POSTS - NCR Tech [CE CODE] stated that [Caller Name] reported [ISSUE]</p>
-          </td>
-          <td class="action-cell">
-            <span class="status-msg">Copied!</span>
-            <button class="btn" onclick="copyLog(this)">Copy</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p class="log-text">POSFSD - Dispatching per CE US***** request.</p>
-          </td>
-          <td class="action-cell">
-            <span class="status-msg">Copied!</span>
-            <button class="btn" onclick="copyLog(this)">Copy</button>
-          </td>
-        </tr>
-    </table>
+      </div>
     </div>
-  </div>
+  </main>
 
-<!-- 1. The Invisible Anchor Point (Place this at the very top of your <body> tags) -->
+  <a href="#top-anchor" id="btnScrollTop" class="back-to-top-fixed" title="Scroll to Top">Top ▲</a>
 
-<!-- 2. The Interactive Floating Button (Place this anywhere inside your <body> tags) -->
-<a href="#top-anchor" id="btnScrollTop" class="back-to-top-fixed" title="Scroll to Top">Top ▲</a>
-
-
-<textarea id="hidden-copy-area" class="fallback-textarea" aria-hidden="true"></textarea>
-</textarea>
+  <textarea id="hidden-copy-area" class="fallback-textarea" aria-hidden="true" tabindex="-1"></textarea>
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
@@ -603,5 +797,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
