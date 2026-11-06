@@ -78,6 +78,16 @@ input:focus-visible {
   flex: none;
 }
 
+.logo {
+display: block;
+width: 40px;
+height: 40px;
+background-image: url('./images/walmart_ico.png');
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+}
+
 code {
   font-family: var(--mono);
   font-size: 0.85em;
