@@ -124,7 +124,7 @@ code {
 }
 
 .kb-logo {
-width: auto;
+width: 20px;
 height: auto;
 }
 
@@ -136,6 +136,7 @@ height: auto;
 .kb-brand-sub {
   font-size: 0.85rem;
   opacity: 0.8;
+font-weight: bold;
 }
 
 .kb-topnav {
